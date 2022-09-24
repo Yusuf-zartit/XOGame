@@ -283,3 +283,41 @@ body {
     width: 100%;
     background-color: var(--color-bg-light);
 }
+
+/* score */
+.score {
+    text-align: center;
+}
+.score__title {
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin: 30px 0;
+}
+.score__btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* restart */
+.restart {
+    text-align: center;
+}
+.restart__title {
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 30px;
+}
+.restart__btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
