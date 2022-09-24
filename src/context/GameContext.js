@@ -7,7 +7,7 @@ const GameContext = createContext(undefined);
 
 
 const GameState = (props) => {
-    const {showModal, setModalMode} = useContext(ModalContext);
+    const {showModal, setModalMode, hideModal} = useContext(ModalContext);
 
     const [screen, setScreen] = useState('start');// start || game
     const [activeUser, setActiveUser] = useState("x");// x || o
@@ -42,7 +42,6 @@ const GameState = (props) => {
 
     const checkWinner = (copySquares) => {
         const isWinner = calcSquares(copySquares);
-        console.log('*** ',isWinner);
         if (isWinner) {
             setWinner(isWinner.winner);
             setWinnerLine(isWinner.lines);
@@ -55,7 +54,24 @@ const GameState = (props) => {
             setModalMode("winner");
         }
     }
+    const handleReset = () => {
+        setSquares(new Array(9).fill(''));
+        setXnext(false);
+        setWinner(null);
+        setWinnerLine(null);
+        setActiveUser('x');
+        setTies({x: 0, o: 0});
+        hideModal();
+        setScreen("start");
 
+    }
+    const handleNextRound = () => {
+        setSquares(new Array(9).fill(''));
+        setXnext(winner === 'x');
+        setWinner(null);
+        setWinnerLine(null);
+        hideModal();
+    }
     return (
         <GameContext.Provider value={{
             screen,
@@ -63,7 +79,13 @@ const GameState = (props) => {
             changePlayMode,
             setActiveUser,
             handleSquareClick,
-            squares
+            squares,
+            xnext,
+            ties,
+            handleReset,
+            handleNextRound,
+            winner,
+            winnerLine
         }}>
             {props.children}
         </GameContext.Provider>

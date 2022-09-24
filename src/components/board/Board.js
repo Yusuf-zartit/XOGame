@@ -5,7 +5,7 @@ import BoardCard from "./BoardCard";
 import {GameContext} from "../../context/GameContext";
 
 const Board = () => {
-    const {squares} = useContext(GameContext);
+    const {squares, xnext, ties} = useContext(GameContext);
 
 
     return (
@@ -16,7 +16,8 @@ const Board = () => {
                     <Oicon/>
                 </div>
                 <div className={"board_turn"}>
-                    <Xicon color={"light"} size={"sm"}/> turn
+                    {!xnext ? <Xicon color={"light"} size={"sm"}/> : <Oicon color={"light"} size={"sm"}/>}
+                    turn
                 </div>
                 <div>
                     <button className="btn btn-sm board__restart">
@@ -30,18 +31,18 @@ const Board = () => {
                 </div>
             </div>
             <div className={"board__body"}>
-                {squares.map((sq,ix)=>(
-                    <BoardCard key={ix} index={ix} user={sq} active={ix===6}/>
+                {squares.map((sq, ix) => (
+                    <BoardCard key={ix} index={ix} user={sq} active={ix === 6}/>
                 ))}
             </div>
             <div className={"boarder__footer"}>
                 <div className={"card bg-blue"}>
                     <p className={"text-light"}> x (you)</p>
-                    <strong className={"text-2xl"}> 10</strong>
+                    <strong className={"text-2xl"}> {ties.x}</strong>
                 </div>
                 <div className={"card bg-light"}>
                     <p className={"text-light"}> (ties)</p>
-                    <strong className={"text-2xl"}> 20</strong>
+                    <strong className={"text-2xl"}> {ties.x + ties.o}</strong>
                 </div>
                 <div className={"card bg-yellow"}>
                     <p className={"text-light"}> o (cpu)</p>
