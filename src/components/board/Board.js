@@ -5,7 +5,7 @@ import BoardCard from "./BoardCard";
 import {GameContext} from "../../context/GameContext";
 
 const Board = () => {
-    const {squares, xnext, ties} = useContext(GameContext);
+    const {squares, xnext, ties,winner, winnerLine} = useContext(GameContext);
 
 
     return (
@@ -32,7 +32,7 @@ const Board = () => {
             </div>
             <div className={"board__body"}>
                 {squares.map((sq, ix) => (
-                    <BoardCard key={ix} index={ix} user={sq} active={ix === 6}/>
+                    <BoardCard key={ix} index={ix} user={sq} active={winner && winnerLine && winnerLine.includes(ix)}/>
                 ))}
             </div>
             <div className={"boarder__footer"}>

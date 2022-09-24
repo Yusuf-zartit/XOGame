@@ -44,7 +44,7 @@ const GameState = (props) => {
         const isWinner = calcSquares(copySquares);
         if (isWinner) {
             setWinner(isWinner.winner);
-            setWinnerLine(isWinner.lines);
+            setWinnerLine(isWinner.line);
 
             // set ties
             const ti = {...ties}

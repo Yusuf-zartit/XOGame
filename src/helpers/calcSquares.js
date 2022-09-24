@@ -14,7 +14,7 @@ export function calcSquares(squares) {
         const [a, b, c] = lines[i];
         if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
             return {
-                winner: squares[a], lines: lines[i]
+                winner: squares[a], line: lines[i]
             }
         }
     }
