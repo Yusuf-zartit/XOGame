@@ -1,15 +1,22 @@
-import {createContext, useState} from "react";
+import {createContext, useContext, useState} from "react";
+import {calcSquares} from "../helpers/calcSquares";
+import {ModalContext} from "./ModalContext";
 
 
 const GameContext = createContext(undefined);
 
 
 const GameState = (props) => {
+    const {showModal, setModalMode} = useContext(ModalContext);
+
     const [screen, setScreen] = useState('start');// start || game
     const [activeUser, setActiveUser] = useState("x");// x || o
     const [playMode, setPlayMode] = useState("user");// user || cpu
     const [squares, setSquares] = useState(new Array(9).fill(''));
     const [xnext, setXnext] = useState(false);
+    const [winner, setWinner] = useState(null);
+    const [winnerLine, setWinnerLine] = useState(null);
+    const [ties, setTies] = useState({x: 0, o: 0});
 
 
     const changePlayMode = (mode) => {
@@ -28,6 +35,25 @@ const GameState = (props) => {
         copySquares[ix] = !xnext ? 'x' : 'o';
         setSquares(copySquares);
         setXnext(!xnext);
+
+        // check winner
+        checkWinner(copySquares);
+    }
+
+    const checkWinner = (copySquares) => {
+        const isWinner = calcSquares(copySquares);
+        console.log('*** ',isWinner);
+        if (isWinner) {
+            setWinner(isWinner.winner);
+            setWinnerLine(isWinner.lines);
+
+            // set ties
+            const ti = {...ties}
+            ti[isWinner.winner] += 1;
+            setTies(ti);
+            showModal();
+            setModalMode("winner");
+        }
     }
 
     return (
