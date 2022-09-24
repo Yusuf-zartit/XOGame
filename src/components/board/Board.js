@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Xicon from "../icons/Xicon";
 import Oicon from "../icons/Oicon";
 import BoardCard from "./BoardCard";
+import {GameContext} from "../../context/GameContext";
 
 const Board = () => {
-    const squares = ["","o","x","","o","x","","",""]
+    const {squares} = useContext(GameContext);
+
+
     return (
         <div className={"board"}>
             <div className={"board__header"}>
@@ -28,7 +31,7 @@ const Board = () => {
             </div>
             <div className={"board__body"}>
                 {squares.map((sq,ix)=>(
-                    <BoardCard key={ix} user={sq} active={ix===5}/>
+                    <BoardCard key={ix} index={ix} user={sq} active={ix===6}/>
                 ))}
             </div>
             <div className={"boarder__footer"}>
