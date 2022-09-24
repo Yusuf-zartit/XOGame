@@ -114,6 +114,16 @@ body {
     --shadow-y: 3px;
 }
 
+.shadow-gray {
+    box-shadow: 0 8px 0 rgba(0,0,0,0.2);
+}
+.shadow-blue {
+    box-shadow: 0 8px 0 var(--color-blue-dark);
+}
+.shadow-yellow {
+    box-shadow: 0 8px 0 var(--color-yellow-dark);
+}
+
 /* icons */
 .icon {
     display: inline-block;
@@ -205,4 +215,23 @@ body {
 }
 .board__restart:active svg {
     transform: rotate(180deg);
+}
+.board__body {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 25px 20px;
+}
+.board__body .card {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding-inline: 10px;
+}
+.board__body .active.shadow-blue {
+    background-color: var(--color-blue);
+}
+.board__body .active.shadow-yellow {
+    background-color: var(--color-yellow);
 }
