@@ -266,3 +266,20 @@ body {
 .boarder__footer .card {
     gap: 15px;
 }
+
+/*  modal  */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1300;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+}
+.modal__content {
+    width: 100%;
+    background-color: var(--color-bg-light);
+}

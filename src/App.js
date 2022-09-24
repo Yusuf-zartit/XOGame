@@ -1,5 +1,6 @@
 import Start from "./components/start/Start";
 import Board from "./components/board/Board";
+import Modal from "./components/modal/Modal";
 
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
                 {/*<Start/>*/}
                 <Board/>
             </div>
+            <Modal/>
         </div>
     );
 }
