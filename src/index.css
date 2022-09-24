@@ -72,6 +72,27 @@ body {
 .text-yellow {
     color: var(--color-yellow);
 }
+.bg-blue {
+    background-color: var(--color-blue);
+    color: var(--color-bg-dark);
+}
+.bg-light {
+    background-color: var(--color-gray);
+    color: var(--color-bg-dark);
+}
+.bg-yellow {
+    background-color: var(--color-yellow);
+    color: var(--color-bg-dark);
+}
+
+.bg-blue.text-light,
+.bg-blue .text-light,
+.bg-yellow.text-light,
+.bg-yellow .text-light,
+.bg-light.text-light,
+.bg-light .text-light {
+    color: var(--color-bg-light);
+}
 
 .btn {
     background: var(--color-gray);
@@ -234,4 +255,14 @@ body {
 }
 .board__body .active.shadow-yellow {
     background-color: var(--color-yellow);
+}
+
+.boarder__footer {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+.boarder__footer .card {
+    gap: 15px;
 }
