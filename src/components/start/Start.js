@@ -1,19 +1,22 @@
 import React from 'react';
+import Xicon from "../icons/Xicon";
+import Oicon from "../icons/Oicon";
 
 const Start = () => {
     return (
         <div className={"start"}>
             <div className={"start__header"}>
-                x o
+                <Xicon/>
+                <Oicon/>
             </div>
             <div className={"card shadow-gray"}>
                 <h1 className={"text-lg"}>Pick player 1's mark</h1>
                 <div className={"start__players"}>
                     <span className={"start__players--active"}>
-                        x
+                        <Xicon color={"dark"}/>
                     </span>
                     <span>
-                        o
+                        <Oicon color={"light"}/>
                     </span>
                 </div>
                 <p className={"text-light"}> remember: x goes first</p>
