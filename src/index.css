@@ -179,3 +179,30 @@ body {
     flex-direction: column;
     gap: 12px;
 }
+
+/* board */
+.board__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+.board__turn {
+    border-radius: 5px;
+    background-color: var(--color-bg-light);
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+}
+.board__restart svg {
+    height: 20px;
+    display: flex;
+    align-items: center;
+    transform-origin: center;
+    transition: all 0.3s;
+}
+.board__restart:active svg {
+    transform: rotate(180deg);
+}
