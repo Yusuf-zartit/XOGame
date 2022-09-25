@@ -20,3 +20,35 @@ export function calcSquares(squares) {
     }
     return null;
 }
+
+export function calcBestMove(squares, player) {
+    const getArrDuplicatedCount = (arr => {
+        let count = 0;
+        arr.forEach(i => {
+            if(squares[i] === player) {
+                count += 1;
+            }
+        })
+        return count;
+    })
+
+    const sortedLines = lines.sort((a, b) => {
+        const aCount = getArrDuplicatedCount(a);
+        const bCount = getArrDuplicatedCount(b);
+        return bCount - aCount;
+    })
+
+    for (let i=0; i< sortedLines.length ; i++) {
+        let val = sortedLines[i].find(el => {
+            if (squares[el] === "") {
+                return el + "";
+            }
+            return null;
+        })
+        if (!val){
+            continue
+        }else {
+            return +val;
+        }
+    }
+}

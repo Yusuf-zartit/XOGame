@@ -1,5 +1,5 @@
 import {createContext, useContext, useEffect, useState} from "react";
-import {calcSquares} from "../helpers/calcSquares";
+import {calcBestMove, calcSquares} from "../helpers/calcSquares";
 import {ModalContext} from "./ModalContext";
 
 
@@ -18,9 +18,13 @@ const GameState = (props) => {
     const [winnerLine, setWinnerLine] = useState(null);
     const [ties, setTies] = useState({x: 0, o: 0});
 
-    useEffect(()=> {
+    useEffect(() => {
         checkNoWinner();
-    },[xnext,winner,screen])
+        const currentUser = xnext ? 'o' : 'x';
+        if (playMode === 'cpu' && currentUser !== activeUser && !winner) {
+            cpuNextCpu(squares);
+        }
+    }, [xnext, winner, screen])
 
     const changePlayMode = (mode) => {
         setPlayMode(mode);
@@ -28,7 +32,7 @@ const GameState = (props) => {
     };
 
     const handleSquareClick = (ix) => {
-        if (squares[ix] || winner){
+        if (squares[ix] || winner) {
             return;
         }
 
@@ -62,8 +66,8 @@ const GameState = (props) => {
     }
 
     const checkNoWinner = () => {
-        const moves = squares.filter(sq => sq ==="")
-        if (moves.length === 0){
+        const moves = squares.filter(sq => sq === "")
+        if (moves.length === 0) {
             setWinner("no");
             showModal();
             setModalMode("winner");
@@ -88,6 +92,16 @@ const GameState = (props) => {
         setWinnerLine(null);
         hideModal();
     }
+
+    const cpuNextCpu = (sq) => {
+        const bestMove = calcBestMove (sq,activeUser === "x" ? "o": "x")
+        let ns = [...squares]
+        ns[bestMove] = !xnext ? "x" : "o";
+        setSquares(ns);
+        setXnext(!xnext);
+        checkWinner(ns);
+    }
+
     return (
         <GameContext.Provider value={{
             screen,
