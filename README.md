@@ -1,3 +1,10 @@
+  # START AND BOARD PAGES
+![image](https://user-images.githubusercontent.com/63548968/192160507-91145c54-969c-41fd-99ea-6d9e82a28d43.png)
+
+# MODAL, RESTART AND WIN MODALS
+![image](https://user-images.githubusercontent.com/63548968/192160611-5f456aa4-32a3-4c13-9dc6-c9de398727f6.png)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
