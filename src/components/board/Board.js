@@ -5,8 +5,19 @@ import BoardCard from "./BoardCard";
 import {GameContext} from "../../context/GameContext";
 
 const Board = () => {
-    const {squares, xnext, ties,winner, winnerLine, resetGame} = useContext(GameContext);
+    const {squares, xnext, ties, winner, winnerLine, resetGame, playMode, activeUser} = useContext(GameContext);
 
+    const checkUser = (user) => {
+        if (user === 'you') {
+            return activeUser === 'x' ? "x (you)" : "o (you)"
+        } else {
+            if (playMode === 'cpu') {
+                return activeUser === 'x' ? "o (cpu)" : "x (cpu)"
+            } else {
+                return activeUser === 'x' ? "o (rival)" : "x (rival)"
+            }
+        }
+    }
 
     return (
         <div className={"board"}>
@@ -37,16 +48,16 @@ const Board = () => {
             </div>
             <div className={"boarder__footer"}>
                 <div className={"card bg-blue"}>
-                    <p className={"text-light"}> x (you)</p>
-                    <strong className={"text-2xl"}> {ties.x}</strong>
+                    <p className={"text-light"}> {checkUser('you')}</p>
+                    <strong className={"text-2xl"}> {activeUser === 'x' ? ties.x : ties.o}</strong>
                 </div>
                 <div className={"card bg-light"}>
                     <p className={"text-light"}> (ties)</p>
                     <strong className={"text-2xl"}> {ties.x + ties.o}</strong>
                 </div>
                 <div className={"card bg-yellow"}>
-                    <p className={"text-light"}> o (cpu)</p>
-                    <strong className={"text-2xl"}> 10</strong>
+                    <p className={"text-light"}>{checkUser('rival')}</p>
+                    <strong className={"text-2xl"}>{activeUser !== 'x' ? ties.x : ties.o}</strong>
                 </div>
             </div>
         </div>

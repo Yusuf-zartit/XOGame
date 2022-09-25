@@ -64,6 +64,7 @@ body {
 
 .text-light {
     color: var(--color-gray-dark);
+    display: inline;
 }
 
 .text-blue {

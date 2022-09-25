@@ -121,7 +121,8 @@ const GameState = (props) => {
             handleNextRound,
             winner,
             winnerLine,
-            resetGame
+            resetGame,
+            playMode
         }}>
             {props.children}
         </GameContext.Provider>
