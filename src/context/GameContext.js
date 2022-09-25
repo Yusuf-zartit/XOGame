@@ -102,6 +102,11 @@ const GameState = (props) => {
         checkWinner(ns);
     }
 
+    const resetGame = () => {
+        showModal();
+        setModalMode("start")
+    }
+
     return (
         <GameContext.Provider value={{
             screen,
@@ -115,7 +120,8 @@ const GameState = (props) => {
             handleReset,
             handleNextRound,
             winner,
-            winnerLine
+            winnerLine,
+            resetGame
         }}>
             {props.children}
         </GameContext.Provider>

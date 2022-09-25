@@ -5,7 +5,7 @@ import BoardCard from "./BoardCard";
 import {GameContext} from "../../context/GameContext";
 
 const Board = () => {
-    const {squares, xnext, ties,winner, winnerLine} = useContext(GameContext);
+    const {squares, xnext, ties,winner, winnerLine, resetGame} = useContext(GameContext);
 
 
     return (
@@ -20,7 +20,7 @@ const Board = () => {
                     turn
                 </div>
                 <div>
-                    <button className="btn btn-sm board__restart">
+                    <button className="btn btn-sm board__restart" onClick={resetGame}>
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="redo"
                              role="img"
                              viewBox="0 0 512 512">
