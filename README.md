@@ -1,4 +1,4 @@
-  # START AND BOARD PAGE
+  # START AND BOARD PAGES
 ![image](https://user-images.githubusercontent.com/63548968/192160507-91145c54-969c-41fd-99ea-6d9e82a28d43.png)
 
 # MODAL, RESTART AND WIN MODALS
