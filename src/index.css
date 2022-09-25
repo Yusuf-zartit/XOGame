@@ -266,6 +266,7 @@ body {
 }
 .boarder__footer .card {
     gap: 15px;
+    height: 120px;
 }
 
 /*  modal  */
