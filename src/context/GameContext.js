@@ -1,4 +1,4 @@
-import {createContext, useContext, useEffect, useState} from "react";
+import React,{createContext, useContext, useEffect, useState} from "react";
 import {calcBestMove, calcSquares} from "../helpers/calcSquares";
 import {ModalContext} from "./ModalContext";
 

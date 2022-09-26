@@ -1,7 +1,7 @@
 import Start from "./components/start/Start";
 import Board from "./components/board/Board";
 import Modal from "./components/modal/Modal";
-import {useContext} from "react";
+import React,{useContext} from "react";
 import {GameContext} from "./context/GameContext";
 
 
